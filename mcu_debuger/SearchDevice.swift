@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SearchDevice: View {
-    @ObservedObject var udp_agent : UDPAgent
+    @ObservedObject var udpAgent : UDPAgent
     
     var body: some View {
         ScrollView {
-            ForEach(Array(udp_agent.devices.keys), id: \.self) { key in
-                if let device = udp_agent.devices[key] {
+            ForEach(Array(udpAgent.devices.keys), id: \.self) { key in
+                if let device = udpAgent.devices[key] {
                     ZStack {
                         Rectangle()
                             .foregroundColor(.gray.opacity(0.1))

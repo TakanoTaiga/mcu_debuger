@@ -8,24 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		3037081A2C04138E00D384E8 /* SearchDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303708192C04138E00D384E8 /* SearchDevice.swift */; };
-		3037081E2C05925600D384E8 /* view_dock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037081D2C05925600D384E8 /* view_dock.swift */; };
+		303708202C07820D00D384E8 /* ViewDock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037081F2C07820D00D384E8 /* ViewDock.swift */; };
+		303708222C07823600D384E8 /* UDPAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303708212C07823600D384E8 /* UDPAgent.swift */; };
+		303708242C07831F00D384E8 /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303708232C07831F00D384E8 /* DeviceListView.swift */; };
+		303708272C07842900D384E8 /* SingleStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303708262C07842900D384E8 /* SingleStickView.swift */; };
+		303708292C07855200D384E8 /* YController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303708282C07855200D384E8 /* YController.swift */; };
 		305AFF202B9C18EC0016C64A /* mcu_debugerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AFF1F2B9C18EC0016C64A /* mcu_debugerApp.swift */; };
 		305AFF222B9C18EC0016C64A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AFF212B9C18EC0016C64A /* ContentView.swift */; };
 		305AFF242B9C18EC0016C64A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305AFF232B9C18EC0016C64A /* Assets.xcassets */; };
 		305AFF272B9C18EC0016C64A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305AFF262B9C18EC0016C64A /* Preview Assets.xcassets */; };
-		305AFF312B9C1E6B0016C64A /* udp_agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AFF302B9C1E6B0016C64A /* udp_agent.swift */; };
 		305AFF352B9C27A10016C64A /* Joystic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AFF342B9C27A10016C64A /* Joystic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		303708192C04138E00D384E8 /* SearchDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDevice.swift; sourceTree = "<group>"; };
-		3037081D2C05925600D384E8 /* view_dock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view_dock.swift; sourceTree = "<group>"; };
+		3037081F2C07820D00D384E8 /* ViewDock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDock.swift; sourceTree = "<group>"; };
+		303708212C07823600D384E8 /* UDPAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPAgent.swift; sourceTree = "<group>"; };
+		303708232C07831F00D384E8 /* DeviceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListView.swift; sourceTree = "<group>"; };
+		303708262C07842900D384E8 /* SingleStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStickView.swift; sourceTree = "<group>"; };
+		303708282C07855200D384E8 /* YController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YController.swift; sourceTree = "<group>"; };
 		305AFF1C2B9C18EC0016C64A /* mcu_debuger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mcu_debuger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		305AFF1F2B9C18EC0016C64A /* mcu_debugerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mcu_debugerApp.swift; sourceTree = "<group>"; };
 		305AFF212B9C18EC0016C64A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		305AFF232B9C18EC0016C64A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		305AFF262B9C18EC0016C64A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		305AFF302B9C1E6B0016C64A /* udp_agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = udp_agent.swift; sourceTree = "<group>"; };
 		305AFF342B9C27A10016C64A /* Joystic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystic.swift; sourceTree = "<group>"; };
 		305AFF372B9C93310016C64A /* mcu_debuger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mcu_debuger.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,6 +47,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		303708252C07836F00D384E8 /* DeviceList */ = {
+			isa = PBXGroup;
+			children = (
+				303708232C07831F00D384E8 /* DeviceListView.swift */,
+				303708192C04138E00D384E8 /* SearchDevice.swift */,
+			);
+			name = DeviceList;
+			sourceTree = "<group>";
+		};
+		3037082A2C0785DF00D384E8 /* SingleController */ = {
+			isa = PBXGroup;
+			children = (
+				303708262C07842900D384E8 /* SingleStickView.swift */,
+				303708282C07855200D384E8 /* YController.swift */,
+			);
+			name = SingleController;
+			sourceTree = "<group>";
+		};
 		305AFF132B9C18EC0016C64A = {
 			isa = PBXGroup;
 			children = (
@@ -61,14 +85,15 @@
 			isa = PBXGroup;
 			children = (
 				305AFF372B9C93310016C64A /* mcu_debuger.entitlements */,
+				305AFF232B9C18EC0016C64A /* Assets.xcassets */,
 				305AFF1F2B9C18EC0016C64A /* mcu_debugerApp.swift */,
 				305AFF212B9C18EC0016C64A /* ContentView.swift */,
-				305AFF232B9C18EC0016C64A /* Assets.xcassets */,
-				305AFF252B9C18EC0016C64A /* Preview Content */,
-				305AFF302B9C1E6B0016C64A /* udp_agent.swift */,
+				3037081F2C07820D00D384E8 /* ViewDock.swift */,
+				3037082A2C0785DF00D384E8 /* SingleController */,
+				303708252C07836F00D384E8 /* DeviceList */,
+				303708212C07823600D384E8 /* UDPAgent.swift */,
 				305AFF342B9C27A10016C64A /* Joystic.swift */,
-				303708192C04138E00D384E8 /* SearchDevice.swift */,
-				3037081D2C05925600D384E8 /* view_dock.swift */,
+				305AFF252B9C18EC0016C64A /* Preview Content */,
 			);
 			path = mcu_debuger;
 			sourceTree = "<group>";
@@ -155,11 +180,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303708292C07855200D384E8 /* YController.swift in Sources */,
+				303708222C07823600D384E8 /* UDPAgent.swift in Sources */,
 				305AFF222B9C18EC0016C64A /* ContentView.swift in Sources */,
+				303708242C07831F00D384E8 /* DeviceListView.swift in Sources */,
+				303708272C07842900D384E8 /* SingleStickView.swift in Sources */,
 				305AFF202B9C18EC0016C64A /* mcu_debugerApp.swift in Sources */,
 				3037081A2C04138E00D384E8 /* SearchDevice.swift in Sources */,
-				305AFF312B9C1E6B0016C64A /* udp_agent.swift in Sources */,
-				3037081E2C05925600D384E8 /* view_dock.swift in Sources */,
+				303708202C07820D00D384E8 /* ViewDock.swift in Sources */,
 				305AFF352B9C27A10016C64A /* Joystic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

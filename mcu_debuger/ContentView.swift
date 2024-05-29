@@ -24,13 +24,8 @@ struct ContentView: View {
     @ObservedObject var udp_agent = UDPAgent()
     @ObservedObject var joystick_value = JoystickValue()
     @ObservedObject var view_state = UIState()
-    
-    @State var bounds = UIScreen.main.bounds
-    @State var selction_color : Color = .red
-    
+        
     @State var SendingTimer : Timer!
-
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         GeometryReader { geometry in
@@ -90,56 +85,9 @@ struct ContentView: View {
                         }
                     }
                 case 1:
-                    ZStack{
-                        VStack{
-                            Menu {
-                                Picker(selection: $udp_agent.target_device_id) {
-                                    ForEach(Array(udp_agent.devices.keys), id: \.self) { key in
-                                        if let device = udp_agent.devices[key] {
-                                            Text(device.name).tag(device.name)
-                                        }
-                                    }
-                                } label: {}
-                            } label: {
-                                ZStack{
-                                    Rectangle()
-                                        .frame(height: 60)
-                                        .foregroundColor(.white)
-                                    HStack{
-                                        Text("Device:")
-                                            .font(.title3)
-                                            .foregroundStyle(.black)
-                                            .bold()
-                                            .opacity(0.5)
-                                            
-                                        Text(udp_agent.target_device_id)
-                                            .font(.title2)
-                                            .foregroundStyle(.black)
-                                            .bold()
-                                    }
-                                }
-                            }.id(udp_agent.target_device_id)
-                            
-                            Spacer()
-                        }
-            
-                        VStack{
-                            YControllerView(JV: joystick_value)
-                        }
-                    }
-             
+                    SingleStickView(udpAgent: udp_agent, joystickValue: joystick_value)
                 case 2:
-                    VStack {
-                        HStack{
-                            Text("Device List")
-                                .padding(.all)
-                                .font(.title)
-                                .bold()
-                            
-                            Spacer()
-                        }
-                        SearchDevice(udp_agent: udp_agent)
-                    }
+                    DeviceListView(udpAgent: udp_agent)
                 default: error()
                 }
 
@@ -170,14 +118,9 @@ struct ContentView: View {
                                     let vec_rr =  pwr * ( 0.707106781 * x + 0.707106781 * y) + z * 0.5;
                                     
                                     udp_agent.send_data(item: String(Int(vec_fr)).data(using: .utf8)!, key: udp_agent.target_motor_name_1)
-                                    
                                     udp_agent.send_data(item: String(Int(vec_fl)).data(using: .utf8)!, key: udp_agent.target_motor_name_2)
-                                    
                                     udp_agent.send_data(item: String(Int(vec_rl)).data(using: .utf8)!, key: udp_agent.target_motor_name_3)
-                                    
                                     udp_agent.send_data(item: String(Int(vec_rr)).data(using: .utf8)!, key: udp_agent.target_motor_name_4)
-                                    
-
                                 }
 
                             }
