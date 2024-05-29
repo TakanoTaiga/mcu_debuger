@@ -13,6 +13,9 @@
 		303708242C07831F00D384E8 /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303708232C07831F00D384E8 /* DeviceListView.swift */; };
 		303708272C07842900D384E8 /* SingleStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303708262C07842900D384E8 /* SingleStickView.swift */; };
 		303708292C07855200D384E8 /* YController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303708282C07855200D384E8 /* YController.swift */; };
+		3037082C2C07EACD00D384E8 /* MultiStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037082B2C07EACD00D384E8 /* MultiStickView.swift */; };
+		3037082F2C07EC3F00D384E8 /* OmniUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037082E2C07EC3F00D384E8 /* OmniUtil.swift */; };
+		303708322C07EFB400D384E8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303708312C07EFB400D384E8 /* ErrorView.swift */; };
 		305AFF202B9C18EC0016C64A /* mcu_debugerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AFF1F2B9C18EC0016C64A /* mcu_debugerApp.swift */; };
 		305AFF222B9C18EC0016C64A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AFF212B9C18EC0016C64A /* ContentView.swift */; };
 		305AFF242B9C18EC0016C64A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305AFF232B9C18EC0016C64A /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 		303708232C07831F00D384E8 /* DeviceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListView.swift; sourceTree = "<group>"; };
 		303708262C07842900D384E8 /* SingleStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStickView.swift; sourceTree = "<group>"; };
 		303708282C07855200D384E8 /* YController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YController.swift; sourceTree = "<group>"; };
+		3037082B2C07EACD00D384E8 /* MultiStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStickView.swift; sourceTree = "<group>"; };
+		3037082E2C07EC3F00D384E8 /* OmniUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniUtil.swift; sourceTree = "<group>"; };
+		303708312C07EFB400D384E8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		305AFF1C2B9C18EC0016C64A /* mcu_debuger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mcu_debuger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		305AFF1F2B9C18EC0016C64A /* mcu_debugerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mcu_debugerApp.swift; sourceTree = "<group>"; };
 		305AFF212B9C18EC0016C64A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +71,24 @@
 			name = SingleController;
 			sourceTree = "<group>";
 		};
+		3037082D2C07EC2900D384E8 /* MultiController */ = {
+			isa = PBXGroup;
+			children = (
+				3037082B2C07EACD00D384E8 /* MultiStickView.swift */,
+			);
+			path = MultiController;
+			sourceTree = "<group>";
+		};
+		303708302C07EF5D00D384E8 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				303708212C07823600D384E8 /* UDPAgent.swift */,
+				3037082E2C07EC3F00D384E8 /* OmniUtil.swift */,
+				303708312C07EFB400D384E8 /* ErrorView.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		305AFF132B9C18EC0016C64A = {
 			isa = PBXGroup;
 			children = (
@@ -89,10 +113,11 @@
 				305AFF1F2B9C18EC0016C64A /* mcu_debugerApp.swift */,
 				305AFF212B9C18EC0016C64A /* ContentView.swift */,
 				3037081F2C07820D00D384E8 /* ViewDock.swift */,
+				305AFF342B9C27A10016C64A /* Joystic.swift */,
+				3037082D2C07EC2900D384E8 /* MultiController */,
 				3037082A2C0785DF00D384E8 /* SingleController */,
 				303708252C07836F00D384E8 /* DeviceList */,
-				303708212C07823600D384E8 /* UDPAgent.swift */,
-				305AFF342B9C27A10016C64A /* Joystic.swift */,
+				303708302C07EF5D00D384E8 /* Util */,
 				305AFF252B9C18EC0016C64A /* Preview Content */,
 			);
 			path = mcu_debuger;
@@ -181,10 +206,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				303708292C07855200D384E8 /* YController.swift in Sources */,
+				3037082C2C07EACD00D384E8 /* MultiStickView.swift in Sources */,
 				303708222C07823600D384E8 /* UDPAgent.swift in Sources */,
 				305AFF222B9C18EC0016C64A /* ContentView.swift in Sources */,
 				303708242C07831F00D384E8 /* DeviceListView.swift in Sources */,
 				303708272C07842900D384E8 /* SingleStickView.swift in Sources */,
+				3037082F2C07EC3F00D384E8 /* OmniUtil.swift in Sources */,
+				303708322C07EFB400D384E8 /* ErrorView.swift in Sources */,
 				305AFF202B9C18EC0016C64A /* mcu_debugerApp.swift in Sources */,
 				3037081A2C04138E00D384E8 /* SearchDevice.swift in Sources */,
 				303708202C07820D00D384E8 /* ViewDock.swift in Sources */,

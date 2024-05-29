@@ -8,18 +8,6 @@ class UIState : ObservableObject {
     @Published var show_view_id : Int = 0
 }
 
-
-struct error: View {
-    var body: some View {
-        VStack{
-            Image(systemName: "exclamationmark.triangle.fill")
-                .font(.title)
-                .foregroundColor(.yellow)
-            Text("Oops!?")
-        }
-    }
-}
-
 struct ContentView: View {
     @ObservedObject var udp_agent = UDPAgent()
     @ObservedObject var joystick_value = JoystickValue()
@@ -38,57 +26,14 @@ struct ContentView: View {
                     if geometry.size.width < geometry.size.height {
                         Text("What happen!?")
                     }else{
-                        ZStack{
-                            HStack{
-                                XYControllerView(JV: joystick_value)
-                                    .padding(.bottom, 50.0)
-                                Spacer()
-                            }
-                            
-                            HStack{
-                                Spacer()
-                                YControllerView(JV: joystick_value)
-                                    .padding(.bottom, 50.0)
-                            }
-                            
-                            VStack{
-                                Picker("motor-1", selection: $udp_agent.target_motor_name_1) {
-                                    ForEach(Array(udp_agent.devices.keys), id: \.self) { key in
-                                        if let device = udp_agent.devices[key] {
-                                            Text(device.name).tag(device.name)
-                                        }
-                                    }
-                                }
-                                Picker("motor-2", selection: $udp_agent.target_motor_name_2) {
-                                    ForEach(Array(udp_agent.devices.keys), id: \.self) { key in
-                                        if let device = udp_agent.devices[key] {
-                                            Text(device.name).tag(device.name)
-                                        }
-                                    }
-                                }
-                                Picker("motor-3", selection: $udp_agent.target_motor_name_3) {
-                                    ForEach(Array(udp_agent.devices.keys), id: \.self) { key in
-                                        if let device = udp_agent.devices[key] {
-                                            Text(device.name).tag(device.name)
-                                        }
-                                    }
-                                }
-                                Picker("motor-4", selection: $udp_agent.target_motor_name_4) {
-                                    ForEach(Array(udp_agent.devices.keys), id: \.self) { key in
-                                        if let device = udp_agent.devices[key] {
-                                            Text(device.name).tag(device.name)
-                                        }
-                                    }
-                                }
-                            }
-                  
-                        }
+                        MultiStickView(udpAgent: udp_agent, joystickValue: joystick_value)
                     }
                 case 1:
                     SingleStickView(udpAgent: udp_agent, joystickValue: joystick_value)
                 case 2:
                     DeviceListView(udpAgent: udp_agent)
-                default: error()
+                default:
+                    ErrorView()
                 }
 
                 VStack{
@@ -104,23 +49,14 @@ struct ContentView: View {
                                     NSLog("WowWowSingle!!")
                                     udp_agent.send_data(item: String(joystick_value.YControllerPower).data(using: .utf8)!, key: udp_agent.target_device_id)
                                 }else if (view_state.show_view_id == 0){
-                                    let x = cos(joystick_value.XYControllerDegree) * -1.0
-                                    let y = sin(joystick_value.XYControllerDegree)
-                                    let z = Double(joystick_value.YControllerPower)
-                                    var pwr = joystick_value.XYControllerPower
                                     
-                                    if(pwr < 3.0){
-                                        pwr = 0.0
-                                    }
-                                    let vec_fr =  pwr * ( 0.707106781 * x - 0.707106781 * y) + z * 0.5;
-                                    let vec_fl =  pwr * (-0.707106781 * x - 0.707106781 * y) + z * 0.5;
-                                    let vec_rl =  pwr * (-0.707106781 * x + 0.707106781 * y) + z * 0.5;
-                                    let vec_rr =  pwr * ( 0.707106781 * x + 0.707106781 * y) + z * 0.5;
+                                    let omniUtil = OmniUtil(power: joystick_value.XYControllerPower, angle: joystick_value.XYControllerDegree, rotation: Double(joystick_value.YControllerPower))
+                                    let (fr,fl, rl, rr) = omniUtil.ConvertToMotorPower()
                                     
-                                    udp_agent.send_data(item: String(Int(vec_fr)).data(using: .utf8)!, key: udp_agent.target_motor_name_1)
-                                    udp_agent.send_data(item: String(Int(vec_fl)).data(using: .utf8)!, key: udp_agent.target_motor_name_2)
-                                    udp_agent.send_data(item: String(Int(vec_rl)).data(using: .utf8)!, key: udp_agent.target_motor_name_3)
-                                    udp_agent.send_data(item: String(Int(vec_rr)).data(using: .utf8)!, key: udp_agent.target_motor_name_4)
+                                    udp_agent.send_data(item: String(Int(fr)).data(using: .utf8)!, key: udp_agent.target_motor_name_1)
+                                    udp_agent.send_data(item: String(Int(fl)).data(using: .utf8)!, key: udp_agent.target_motor_name_2)
+                                    udp_agent.send_data(item: String(Int(rl)).data(using: .utf8)!, key: udp_agent.target_motor_name_3)
+                                    udp_agent.send_data(item: String(Int(rr)).data(using: .utf8)!, key: udp_agent.target_motor_name_4)
                                 }
 
                             }
