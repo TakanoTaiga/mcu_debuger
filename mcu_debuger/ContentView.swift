@@ -19,7 +19,6 @@ struct ContentView: View {
         GeometryReader { geometry in
             ZStack{
                 Color.white
-                    .opacity(0.1)
                     .ignoresSafeArea()
                 switch view_state.show_view_id {
                 case 0:

@@ -29,10 +29,10 @@ class UDPAgent: ObservableObject {
     
     @Published var target_device_id: String = ""
     
-    @Published var target_motor_name_1: String = ""
-    @Published var target_motor_name_2: String = ""
-    @Published var target_motor_name_3: String = ""
-    @Published var target_motor_name_4: String = ""
+    @Published var target_motor_name_1: String = "mcu-rm-01"
+    @Published var target_motor_name_2: String = "mcu-rm-02"
+    @Published var target_motor_name_3: String = "mcu-rm-03"
+    @Published var target_motor_name_4: String = "mcu-rm-04"
 
     func addDevice(from input: String) {
         let components = input.split(separator: ",")
