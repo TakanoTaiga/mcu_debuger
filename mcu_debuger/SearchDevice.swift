@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchDevice: View {
-    @ObservedObject var udpAgent : UDPAgent
+    @ObservedObject var udpAgent : MCUConnectionHandler
     
     var body: some View {
         ScrollView {

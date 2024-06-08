@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct SingleStickView: View {
-    @ObservedObject var udpAgent: UDPAgent
+    @ObservedObject var udpAgent: MCUConnectionHandler
+    @ObservedObject var param_mcu: ParamMCUConnection
     @ObservedObject var joystickValue: JoystickValue
     
     var body: some View {
         ZStack{
             VStack{
                 Menu {
-                    Picker(selection: $udpAgent.target_device_id) {
+                    Picker(selection: $param_mcu.target_device_id) {
                         ForEach(Array(udpAgent.devices.keys), id: \.self) { key in
                             if let device = udpAgent.devices[key] {
                                 Text(device.name).tag(device.name)
@@ -34,13 +35,13 @@ struct SingleStickView: View {
                                 .bold()
                                 .opacity(0.5)
                                 
-                            Text(udpAgent.target_device_id)
+                            Text(param_mcu.target_device_id)
                                 .font(.title2)
                                 .foregroundStyle(.black)
                                 .bold()
                         }
                     }
-                }.id(udpAgent.target_device_id)
+                }.id(param_mcu.target_device_id)
                 
                 Spacer()
             }
