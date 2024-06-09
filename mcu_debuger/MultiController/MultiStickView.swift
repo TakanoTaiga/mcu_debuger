@@ -22,7 +22,7 @@ struct MultiStickView: View {
             
             HStack{
                 Spacer()
-                YControllerView(JV: joystickValue)
+                XControllerView(JV: joystickValue)
                     .padding(.bottom, 50.0)
             }
             

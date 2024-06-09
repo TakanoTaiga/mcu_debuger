@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+
 class JoystickValue : ObservableObject {
     @Published var YControllerPower : Int = 0
     @Published var XYControllerPower : Double = 0
@@ -69,12 +70,7 @@ struct XYControllerView: View {
         }
         
         if valueOfRad > 0{
-            if widgh > 0 {
-                //1
-            }else{
-                //2
-                valueOfRad = (Double.pi / 2 - valueOfRad) + Double.pi / 2
-            }
+            valueOfRad = (Double.pi / 2 - valueOfRad) + Double.pi / 2
         }else{
             if widgh < 0 {
                 //3
@@ -89,19 +85,16 @@ struct XYControllerView: View {
     }
 }
 
-
-
-
-
 struct XYStick: View {
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack{
             Circle()
-                .frame(width: 130, height: 130, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: 130, height: 130, alignment: .center)
                 .foregroundColor(.gray.opacity(0.5))
             Circle()
-                .frame(width: 115, height: 115, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.white)
+                .frame(width: 115, height: 115, alignment: .center)
+                .foregroundColor(colorScheme == .light ? .white : .black)
         }
     }
 }

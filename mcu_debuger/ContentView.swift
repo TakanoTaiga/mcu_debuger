@@ -15,12 +15,20 @@ struct ContentView: View {
     @ObservedObject var view_state = UIState()
         
     @State var SendingTimer : Timer!
+    
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         GeometryReader { geometry in
             ZStack{
-                Color.white
-                    .ignoresSafeArea()
+                if colorScheme == .light {
+                    Color.white
+                        .ignoresSafeArea()
+                }else{
+                    Color.black
+                        .ignoresSafeArea()
+                }
+                
                 switch view_state.show_view_id {
                 case 0:
                     if geometry.size.width < geometry.size.height {
@@ -29,7 +37,11 @@ struct ContentView: View {
                         MultiStickView(mcu_connection_handler: mcu_connection_handler, param_mcu: param_mcu, joystickValue: joystick_value)
                     }
                 case 1:
-                    SingleStickView(udpAgent: mcu_connection_handler,param_mcu: param_mcu, joystickValue: joystick_value)
+                    if geometry.size.width < geometry.size.height {
+                        SingleStickView(udpAgent: mcu_connection_handler,param_mcu: param_mcu, joystickValue: joystick_value)
+                    }else{
+                        SingleStickViewForLandscape(udpAgent: mcu_connection_handler,param_mcu: param_mcu, joystickValue: joystick_value)
+                    }
                 case 2:
                     DeviceListView(udpAgent: mcu_connection_handler)
                 default:
@@ -46,7 +58,6 @@ struct ContentView: View {
                             SendingTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true){
                                 _ in
                                 if(view_state.show_view_id == 1){
-                                    NSLog("WowWowSingle!!")
                                     mcu_connection_handler.send_data(item: String(joystick_value.YControllerPower).data(using: .utf8)!, key: param_mcu.target_device_id)
                                 }else if (view_state.show_view_id == 0){
                                     

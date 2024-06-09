@@ -6,6 +6,7 @@ struct MCUDevice: Identifiable {
     var ip: String
     var name: String
     var talker: NWConnection?
+    var timer: Timer?
 }
 
 class ParamMCUConnection: ObservableObject {
@@ -24,6 +25,7 @@ class MCUConnectionHandler: ObservableObject {
     
     private let queue = DispatchQueue(label: "timer", qos: .userInteractive)
     private var listener_device_search: NWListener?
+    private let deviceTimeout: TimeInterval = 10
 
     public func addDevice(from input: String) {
         let components = input.split(separator: ",")
@@ -35,6 +37,13 @@ class MCUConnectionHandler: ObservableObject {
         let ip = String(components[0])
         let name = String(components[1])
         
+        for device in devices.values {
+            if device.ip == ip && device.name == name {
+                resetTimer(for: name)
+                return
+            }
+        }
+        
         let nwip = NWEndpoint.Host(ip)
         
         var device = MCUDevice(ip: ip, name: name)
@@ -43,9 +52,12 @@ class MCUConnectionHandler: ObservableObject {
         device.talker?.start(queue: self.queue)
         
         devices[name] = device
+        resetTimer(for: name)
     }
 
     public func send_data(item: Data, key: String) {
+        if key == "" { return }
+        
         guard let connection = devices[key]?.talker, connection.state == .ready else {
             NSLog("Connection not ready for device: \(key)")
             return
@@ -56,6 +68,18 @@ class MCUConnectionHandler: ObservableObject {
                 NSLog("Send error: \(error)")
             }
         })
+    }
+    
+    private func resetTimer(for name: String) {
+        devices[name]?.timer?.invalidate()
+        devices[name]?.timer = Timer.scheduledTimer(withTimeInterval: deviceTimeout, repeats: false) { [weak self] _ in
+            self?.removeDevice(named: name)
+        }
+    }
+
+    private func removeDevice(named name: String) {
+        devices[name]?.talker?.cancel()
+        devices.removeValue(forKey: name)
     }
     
     init() {

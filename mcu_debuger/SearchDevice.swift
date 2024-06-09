@@ -10,13 +10,16 @@ import SwiftUI
 struct SearchDevice: View {
     @ObservedObject var udpAgent : MCUConnectionHandler
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ScrollView {
             ForEach(Array(udpAgent.devices.keys), id: \.self) { key in
                 if let device = udpAgent.devices[key] {
                     ZStack {
                         Rectangle()
-                            .foregroundColor(.gray.opacity(0.1))
+                            .foregroundColor(.gray)
+                            .opacity(colorScheme == .light ? 0.1: 0.2)
                         
                         
                         HStack {
@@ -33,13 +36,11 @@ struct SearchDevice: View {
                                     .font(.title3)
                                     .bold()
                                     .padding(.leading, 40.0)
-                                    .foregroundColor(.black)
                                 
                                 Text(device.ip)
                                     .font(.headline)
                                     .padding(.leading, 40.0)
                                     .opacity(0.5)
-                                    .foregroundColor(.black)
                             }
                             Spacer()
                         }

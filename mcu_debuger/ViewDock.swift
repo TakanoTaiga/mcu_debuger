@@ -7,12 +7,14 @@ struct ViewDock: View {
     
     @State private var selectedIndex = 0
     @State private var impactFlexibilitySoft = false
+    
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         ZStack {
             Rectangle()
                 .frame(height: paramHeight)
-                .foregroundColor(.white)
+                .foregroundColor(colorScheme == .light ? .white : .black)
             HStack {
                 ForEach(0..<3) { index in
                     NavButton(iconName: iconName(for: index))
@@ -45,10 +47,11 @@ struct ViewDock: View {
 
 struct NavButton: View {
     let iconName: String
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.white)
+                .foregroundColor(colorScheme == .light ? .white : .black)
                 .frame(width: 100)
             Image(systemName: iconName)
                 .font(.title3)
