@@ -44,6 +44,8 @@ struct ContentView: View {
                     }
                 case 2:
                     DeviceListView(udpAgent: mcu_connection_handler)
+                case 3:
+                    SettingView()
                 default:
                     ErrorView()
                 }
@@ -55,19 +57,19 @@ struct ContentView: View {
                         .animation(.easeOut(duration: 0.2), value: geometry.size)
                         .onAppear(){
                             SendingTimer?.invalidate()
-                            SendingTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true){
+                            SendingTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true){
                                 _ in
                                 if(view_state.show_view_id == 1){
-                                    mcu_connection_handler.send_data(item: String(joystick_value.YControllerPower).data(using: .utf8)!, key: param_mcu.target_device_id)
+                                    mcu_connection_handler.send_data(item: String(joystick_value.rotation_power).data(using: .utf8)!, key: param_mcu.target_device_id)
                                 }else if (view_state.show_view_id == 0){
+
+                                    let (fr,fl, rl, rr) = OmniUtil(x_power_: joystick_value.move_x_power, y_power_: joystick_value.move_y_power, rotation_power_: joystick_value.rotation_power).ConvertToMotorPower()
+                                    NSLog("\(Int(fr * 3.0)),\(Int(fl * 3.0)),\(Int(rl * 3.0)),\(Int(rr * 3.0)),")
                                     
-                                    let omniUtil = OmniUtil(power: joystick_value.XYControllerPower, angle: joystick_value.XYControllerDegree, rotation: Double(joystick_value.YControllerPower))
-                                    let (fr,fl, rl, rr) = omniUtil.ConvertToMotorPower()
-                                    
-                                    mcu_connection_handler.send_data(item: String(Int(fr)).data(using: .utf8)!, key: param_mcu.target_motor_name_1)
-                                    mcu_connection_handler.send_data(item: String(Int(fl)).data(using: .utf8)!, key: param_mcu.target_motor_name_2)
-                                    mcu_connection_handler.send_data(item: String(Int(rl)).data(using: .utf8)!, key: param_mcu.target_motor_name_3)
-                                    mcu_connection_handler.send_data(item: String(Int(rr)).data(using: .utf8)!, key: param_mcu.target_motor_name_4)
+//                                    mcu_connection_handler.send_data(item: String(Int(fr)).data(using: .utf8)!, key: param_mcu.target_motor_name_1)
+//                                    mcu_connection_handler.send_data(item: String(Int(fl)).data(using: .utf8)!, key: param_mcu.target_motor_name_2)
+//                                    mcu_connection_handler.send_data(item: String(Int(rl)).data(using: .utf8)!, key: param_mcu.target_motor_name_3)
+//                                    mcu_connection_handler.send_data(item: String(Int(rr)).data(using: .utf8)!, key: param_mcu.target_motor_name_4)
                                 }
 
                             }
@@ -81,7 +83,6 @@ struct ContentView: View {
         }
     }
 }
-
 
 
 extension UIApplication {

@@ -16,7 +16,7 @@ struct ViewDock: View {
                 .frame(height: paramHeight)
                 .foregroundColor(colorScheme == .light ? .white : .black)
             HStack {
-                ForEach(0..<3) { index in
+                ForEach(0..<4) { index in
                     NavButton(iconName: iconName(for: index))
                         .frame(height: paramHeight)
                         .opacity(selectedIndex == index ? 1.0 : 0.4)
@@ -40,6 +40,7 @@ struct ViewDock: View {
         case 0: return "steeringwheel"
         case 1: return "arcade.stick"
         case 2: return "magnifyingglass"
+        case 3: return "gear"
         default: return ""
         }
     }
@@ -52,7 +53,7 @@ struct NavButton: View {
         ZStack {
             Rectangle()
                 .foregroundColor(colorScheme == .light ? .white : .black)
-                .frame(width: 100)
+                .frame(width: 80)
             Image(systemName: iconName)
                 .font(.title3)
         }

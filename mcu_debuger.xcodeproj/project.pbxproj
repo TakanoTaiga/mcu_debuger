@@ -20,8 +20,9 @@
 		305AFF242B9C18EC0016C64A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305AFF232B9C18EC0016C64A /* Assets.xcassets */; };
 		305AFF272B9C18EC0016C64A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305AFF262B9C18EC0016C64A /* Preview Assets.xcassets */; };
 		305AFF352B9C27A10016C64A /* Joystic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AFF342B9C27A10016C64A /* Joystic.swift */; };
+		30799A2B2C1C04B5005D3A14 /* SC3Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 30799A2A2C1C04B5005D3A14 /* SC3Icon.png */; };
+		307A4FDA2C3812C400712AA6 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307A4FD92C3812C400712AA6 /* SettingView.swift */; };
 		30A71FEE2C1427DE00BEE2DD /* MCUConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A71FED2C1427DE00BEE2DD /* MCUConnectionHandler.swift */; };
-		30A720092C15646400BEE2DD /* 1024.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 30A71FFB2C15646400BEE2DD /* 1024.jpeg */; };
 		30A7200D2C156F9000BEE2DD /* XControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7200C2C156F9000BEE2DD /* XControllerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +42,9 @@
 		305AFF262B9C18EC0016C64A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		305AFF342B9C27A10016C64A /* Joystic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystic.swift; sourceTree = "<group>"; };
 		305AFF372B9C93310016C64A /* mcu_debuger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mcu_debuger.entitlements; sourceTree = "<group>"; };
+		30799A2A2C1C04B5005D3A14 /* SC3Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SC3Icon.png; sourceTree = "<group>"; };
+		307A4FD92C3812C400712AA6 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		30A71FED2C1427DE00BEE2DD /* MCUConnectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCUConnectionHandler.swift; sourceTree = "<group>"; };
-		30A71FFB2C15646400BEE2DD /* 1024.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1024.jpeg; sourceTree = "<group>"; };
 		30A7200C2C156F9000BEE2DD /* XControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XControllerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 				303708252C07836F00D384E8 /* DeviceList */,
 				303708302C07EF5D00D384E8 /* Util */,
 				305AFF252B9C18EC0016C64A /* Preview Content */,
+				307A4FD82C3812AB00712AA6 /* Setting */,
 			);
 			path = mcu_debuger;
 			sourceTree = "<group>";
@@ -135,6 +138,14 @@
 				305AFF262B9C18EC0016C64A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		307A4FD82C3812AB00712AA6 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				307A4FD92C3812C400712AA6 /* SettingView.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		30A71FEA2C14275600BEE2DD /* Connection */ = {
@@ -148,7 +159,7 @@
 		30A71FFC2C15646400BEE2DD /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				30A71FFB2C15646400BEE2DD /* 1024.jpeg */,
+				30799A2A2C1C04B5005D3A14 /* SC3Icon.png */,
 			);
 			name = icons;
 			path = mcu_debuger/icons;
@@ -216,7 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30A720092C15646400BEE2DD /* 1024.jpeg in Resources */,
+				30799A2B2C1C04B5005D3A14 /* SC3Icon.png in Resources */,
 				305AFF272B9C18EC0016C64A /* Preview Assets.xcassets in Resources */,
 				305AFF242B9C18EC0016C64A /* Assets.xcassets in Resources */,
 			);
@@ -232,6 +243,7 @@
 				303708292C07855200D384E8 /* YController.swift in Sources */,
 				3037082C2C07EACD00D384E8 /* MultiStickView.swift in Sources */,
 				30A71FEE2C1427DE00BEE2DD /* MCUConnectionHandler.swift in Sources */,
+				307A4FDA2C3812C400712AA6 /* SettingView.swift in Sources */,
 				305AFF222B9C18EC0016C64A /* ContentView.swift in Sources */,
 				303708242C07831F00D384E8 /* DeviceListView.swift in Sources */,
 				30A7200D2C156F9000BEE2DD /* XControllerView.swift in Sources */,
@@ -374,7 +386,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = mcu_debuger/mcu_debuger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.2.1;
 				DEVELOPMENT_ASSET_PATHS = "\"mcu_debuger/Preview Content\"";
 				DEVELOPMENT_TEAM = V9J6H8S566;
 				ENABLE_PREVIEWS = YES;
@@ -383,13 +395,13 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiga.mcu-debuger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -405,7 +417,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = mcu_debuger/mcu_debuger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.2.1;
 				DEVELOPMENT_ASSET_PATHS = "\"mcu_debuger/Preview Content\"";
 				DEVELOPMENT_TEAM = V9J6H8S566;
 				ENABLE_PREVIEWS = YES;
@@ -414,13 +426,13 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiga.mcu-debuger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

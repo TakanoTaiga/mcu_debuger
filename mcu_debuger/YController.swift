@@ -29,40 +29,18 @@ struct YControllerView: View {
                         let factor = 1 / (dist / limit + 1)
                         self.dragValue = CGSize(width: 0 , height: value.translation.height * factor)
                         self.isDragging = true
-                        
-                        powerManger(inputObjectPowerWidth: dragValue.height)
+
+                        JV.rotation_power = dragValue.height
 
                     }
                         .onEnded { value in
                             self.dragValue = .zero
                             self.isDragging = false
-                            powerManger(inputObjectPowerWidth: dragValue.height)
                             
+                            JV.rotation_power = 0
                         }
                 )
                 .animation(.spring(response: 0.2, dampingFraction: 0.6, blendDuration: 0), value: self.dragValue)
-        }
-    }
-    
-    func powerManger(inputObjectPowerWidth: CGFloat){
-        let inputObjectPower = Double(inputObjectPowerWidth)
-        if sqrt(pow(inputObjectPower, 2)) <= 20 {
-            JV.YControllerPower = 0
-            JV.YControllerPower = 0
-        }else if sqrt(pow(inputObjectPower, 2)) >= 80{
-            if inputObjectPower > 0 {
-                JV.YControllerPower = -200
-                
-            }else{
-                JV.YControllerPower = 200
-            }
-        }else{
-            if inputObjectPower > 0 {
-                JV.YControllerPower = Int(((sqrt(pow(inputObjectPower, 2)) - 20.0) / 60.0 ) * -200.0)
-                
-            }else{
-                JV.YControllerPower = Int(((sqrt(pow(inputObjectPower, 2)) - 20.0) / 60.0 ) * 200)
-            }
         }
     }
 }

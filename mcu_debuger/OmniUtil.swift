@@ -8,28 +8,21 @@
 import Foundation
 
 class OmniUtil{
-    public var power: Double
-    public var angle: Double
-    public var rotation: Double
+    private var x_power: Double
+    private var y_power: Double
+    private var rotation_power: Double
     
-    init(power: Double, angle: Double, rotation: Double) {
-        self.power = power
-        self.angle = angle
-        self.rotation = rotation
+    init(x_power_: Double, y_power_: Double, rotation_power_: Double) {
+        self.x_power = x_power_
+        self.y_power = y_power_
+        self.rotation_power = rotation_power_
     }
     
     func ConvertToMotorPower() -> (Double, Double, Double, Double) {
-        let x = cos(self.angle) * -1.0
-        let y = sin(self.angle)
-        let z = Double(self.rotation)
-        
-        if(self.power < 3.0){
-            self.power = 0.0
-        }
-        let FrontRight =  self.power * ( 0.707106781 * x - 0.707106781 * y) + z * 0.5;
-        let FrontLeft  =  self.power * (-0.707106781 * x - 0.707106781 * y) + z * 0.5;
-        let RearLeft   =  self.power * (-0.707106781 * x + 0.707106781 * y) + z * 0.5;
-        let RearRight  =  self.power * ( 0.707106781 * x + 0.707106781 * y) + z * 0.5;
+        let FrontRight =  ( 0.707106781 * self.x_power - 0.707106781 * self.y_power) + self.rotation_power * 0.5;
+        let FrontLeft  =  (-0.707106781 * self.x_power - 0.707106781 * self.y_power) + self.rotation_power * 0.5;
+        let RearLeft   =  (-0.707106781 * self.x_power + 0.707106781 * self.y_power) + self.rotation_power * 0.5;
+        let RearRight  =  ( 0.707106781 * self.x_power + 0.707106781 * self.y_power) + self.rotation_power * 0.5;
         
         return (FrontRight, FrontLeft, RearLeft, RearRight)
     }
