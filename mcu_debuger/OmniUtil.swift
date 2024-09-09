@@ -19,10 +19,10 @@ class OmniUtil{
     }
     
     func ConvertToMotorPower() -> (Double, Double, Double, Double) {
-        let FrontRight =  ( 0.707106781 * self.x_power - 0.707106781 * self.y_power) + self.rotation_power * 0.5;
-        let FrontLeft  =  (-0.707106781 * self.x_power - 0.707106781 * self.y_power) + self.rotation_power * 0.5;
-        let RearLeft   =  (-0.707106781 * self.x_power + 0.707106781 * self.y_power) + self.rotation_power * 0.5;
-        let RearRight  =  ( 0.707106781 * self.x_power + 0.707106781 * self.y_power) + self.rotation_power * 0.5;
+        let FrontRight =  (( 0.707106781 * self.x_power - 0.707106781 * self.y_power) + self.rotation_power * 0.3) * 190.985;
+        let FrontLeft  =  ((-0.707106781 * self.x_power - 0.707106781 * self.y_power) + self.rotation_power * 0.3) * 190.985;
+        let RearLeft   =  ((-0.707106781 * self.x_power + 0.707106781 * self.y_power) + self.rotation_power * 0.3) * 190.985;
+        let RearRight  =  (( 0.707106781 * self.x_power + 0.707106781 * self.y_power) + self.rotation_power * 0.3) * 190.985;
         
         return (FrontRight, FrontLeft, RearLeft, RearRight)
     }

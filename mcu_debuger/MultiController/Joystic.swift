@@ -12,6 +12,7 @@ class JoystickValue : ObservableObject {
     @Published var rotation_power : Double = 0
     @Published var move_x_power : Double = 0
     @Published var move_y_power : Double = 0
+    @Published var valve_power : Double = 0
 }
 
 struct XYControllerView: View {
@@ -36,8 +37,17 @@ struct XYControllerView: View {
                         self.dragValue = CGSize(width: value.translation.width * factor , height: value.translation.height * factor)
                         self.isDragging = true
                         
-                        JV.move_x_power = dragValue.height
-                        JV.move_y_power = dragValue.width
+                        func normalize(_ value: Float) -> Float {
+                            if value > 75 {
+                                return 1.0
+                            }else if value < -75 {
+                                return -1.0
+                            }
+                            return value / 75
+                        }
+                        
+                        JV.move_x_power = Double(normalize(Float(dragValue.height)))
+                        JV.move_y_power = Double(normalize(Float(dragValue.width)))
                     }
                         .onEnded { value in
                             self.dragValue = .zero

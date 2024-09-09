@@ -25,36 +25,27 @@ struct MultiStickView: View {
                 XControllerView(JV: joystickValue)
                     .padding(.bottom, 50.0)
             }
-            
             VStack{
-                Picker("motor-1", selection: $param_mcu.target_motor_name_1) {
-                    ForEach(Array(mcu_connection_handler.devices.keys), id: \.self) { key in
-                        if let device = mcu_connection_handler.devices[key] {
-                            Text(device.name).tag(device.name)
+                Button(action: {
+                    joystickValue.valve_power = 100
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        joystickValue.valve_power = -100
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            joystickValue.valve_power = 0
+                            
                         }
                     }
-                }
-                Picker("motor-2", selection: $param_mcu.target_motor_name_2) {
-                    ForEach(Array(mcu_connection_handler.devices.keys), id: \.self) { key in
-                        if let device = mcu_connection_handler.devices[key] {
-                            Text(device.name).tag(device.name)
-                        }
+                }, label: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 25.0)
+                            .frame(width: 150, height: 50)
+                        Text("発射ボタン")
+                            .foregroundStyle(.black)
                     }
-                }
-                Picker("motor-3", selection: $param_mcu.target_motor_name_3) {
-                    ForEach(Array(mcu_connection_handler.devices.keys), id: \.self) { key in
-                        if let device = mcu_connection_handler.devices[key] {
-                            Text(device.name).tag(device.name)
-                        }
-                    }
-                }
-                Picker("motor-4", selection: $param_mcu.target_motor_name_4) {
-                    ForEach(Array(mcu_connection_handler.devices.keys), id: \.self) { key in
-                        if let device = mcu_connection_handler.devices[key] {
-                            Text(device.name).tag(device.name)
-                        }
-                    }
-                }
+                    .padding(.all)
+                    
+                })
+                Spacer()
             }
   
         }

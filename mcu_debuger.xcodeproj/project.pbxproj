@@ -15,6 +15,7 @@
 		3037082C2C07EACD00D384E8 /* MultiStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037082B2C07EACD00D384E8 /* MultiStickView.swift */; };
 		3037082F2C07EC3F00D384E8 /* OmniUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037082E2C07EC3F00D384E8 /* OmniUtil.swift */; };
 		303708322C07EFB400D384E8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303708312C07EFB400D384E8 /* ErrorView.swift */; };
+		303C481F2C7FF86F00E3B714 /* SmallXController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303C481E2C7FF86F00E3B714 /* SmallXController.swift */; };
 		305AFF202B9C18EC0016C64A /* mcu_debugerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AFF1F2B9C18EC0016C64A /* mcu_debugerApp.swift */; };
 		305AFF222B9C18EC0016C64A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305AFF212B9C18EC0016C64A /* ContentView.swift */; };
 		305AFF242B9C18EC0016C64A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305AFF232B9C18EC0016C64A /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		307A4FDA2C3812C400712AA6 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307A4FD92C3812C400712AA6 /* SettingView.swift */; };
 		30A71FEE2C1427DE00BEE2DD /* MCUConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A71FED2C1427DE00BEE2DD /* MCUConnectionHandler.swift */; };
 		30A7200D2C156F9000BEE2DD /* XControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7200C2C156F9000BEE2DD /* XControllerView.swift */; };
+		30BB0E782C8401EE0090A415 /* GamePadSerivce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB0E772C8401EE0090A415 /* GamePadSerivce.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,7 @@
 		3037082B2C07EACD00D384E8 /* MultiStickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStickView.swift; sourceTree = "<group>"; };
 		3037082E2C07EC3F00D384E8 /* OmniUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniUtil.swift; sourceTree = "<group>"; };
 		303708312C07EFB400D384E8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		303C481E2C7FF86F00E3B714 /* SmallXController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallXController.swift; sourceTree = "<group>"; };
 		305AFF1C2B9C18EC0016C64A /* mcu_debuger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mcu_debuger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		305AFF1F2B9C18EC0016C64A /* mcu_debugerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mcu_debugerApp.swift; sourceTree = "<group>"; };
 		305AFF212B9C18EC0016C64A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		307A4FD92C3812C400712AA6 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		30A71FED2C1427DE00BEE2DD /* MCUConnectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCUConnectionHandler.swift; sourceTree = "<group>"; };
 		30A7200C2C156F9000BEE2DD /* XControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XControllerView.swift; sourceTree = "<group>"; };
+		30BB0E772C8401EE0090A415 /* GamePadSerivce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePadSerivce.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +84,11 @@
 		3037082D2C07EC2900D384E8 /* MultiController */ = {
 			isa = PBXGroup;
 			children = (
+				305AFF342B9C27A10016C64A /* Joystic.swift */,
 				3037082B2C07EACD00D384E8 /* MultiStickView.swift */,
 				30A7200C2C156F9000BEE2DD /* XControllerView.swift */,
+				303C481E2C7FF86F00E3B714 /* SmallXController.swift */,
+				30BB0E772C8401EE0090A415 /* GamePadSerivce.swift */,
 			);
 			path = MultiController;
 			sourceTree = "<group>";
@@ -119,7 +126,6 @@
 				305AFF1F2B9C18EC0016C64A /* mcu_debugerApp.swift */,
 				305AFF212B9C18EC0016C64A /* ContentView.swift */,
 				3037081F2C07820D00D384E8 /* ViewDock.swift */,
-				305AFF342B9C27A10016C64A /* Joystic.swift */,
 				30A71FFC2C15646400BEE2DD /* icons */,
 				30A71FEA2C14275600BEE2DD /* Connection */,
 				3037082D2C07EC2900D384E8 /* MultiController */,
@@ -251,9 +257,11 @@
 				3037082F2C07EC3F00D384E8 /* OmniUtil.swift in Sources */,
 				303708322C07EFB400D384E8 /* ErrorView.swift in Sources */,
 				305AFF202B9C18EC0016C64A /* mcu_debugerApp.swift in Sources */,
+				303C481F2C7FF86F00E3B714 /* SmallXController.swift in Sources */,
 				3037081A2C04138E00D384E8 /* SearchDevice.swift in Sources */,
 				303708202C07820D00D384E8 /* ViewDock.swift in Sources */,
 				305AFF352B9C27A10016C64A /* Joystic.swift in Sources */,
+				30BB0E782C8401EE0090A415 /* GamePadSerivce.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,8 +393,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = mcu_debuger/mcu_debuger.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.2.1;
+				CURRENT_PROJECT_VERSION = 0.4.3;
 				DEVELOPMENT_ASSET_PATHS = "\"mcu_debuger/Preview Content\"";
 				DEVELOPMENT_TEAM = V9J6H8S566;
 				ENABLE_PREVIEWS = YES;
@@ -394,16 +403,17 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiga.mcu-debuger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -416,8 +426,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = mcu_debuger/mcu_debuger.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.2.1;
+				CURRENT_PROJECT_VERSION = 0.4.3;
 				DEVELOPMENT_ASSET_PATHS = "\"mcu_debuger/Preview Content\"";
 				DEVELOPMENT_TEAM = V9J6H8S566;
 				ENABLE_PREVIEWS = YES;
@@ -425,16 +436,17 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiga.mcu-debuger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

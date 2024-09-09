@@ -1,21 +1,36 @@
 //
-//  XControllerView.swift
+//  SmallXController.swift
 //  mcu_debuger
 //
-//  Created by Taiga Takano on 2024/06/09.
+//  Created by Taiga Takano on 2024/08/29.
 //
 
 import SwiftUI
 
-struct XControllerView: View {
+struct YSTICK: View {
+    @Environment(\.colorScheme) var colorScheme
+    var body: some View {
+        ZStack{
+            Circle()
+                .frame(width: 50, height: 50, alignment: .center)
+                .foregroundColor(.gray.opacity(0.5))
+            Circle()
+                .frame(width: 40, height: 40, alignment: .center)
+                .foregroundColor(colorScheme == .light ? .white : .black)
+        }
+    }
+}
+
+struct SmallXController: View {
     @ObservedObject var JV : JoystickValue
     @State var dragValue = CGSize.zero
     @State var isDragging = false
     @State var firstFlag = true
     
     var body: some View {
-        VStack {
-            XYStick()
+        HStack {
+            Text("とじる")
+            YSTICK()
                 .offset(x: dragValue.width * 0.05, y: dragValue.height * 0.05)
                 .frame(width: 180, height: 180)
                 .clipShape(RoundedRectangle(cornerRadius: isDragging ? (55 - abs(dragValue.height) / 10) : 55, style: .continuous))
@@ -29,25 +44,21 @@ struct XControllerView: View {
                         let factor = 1 / (dist / limit + 1)
                         self.dragValue = CGSize(width: value.translation.width * factor , height: 0)
                         self.isDragging = true
-                        
-                        func normalize(_ value: Float) -> Float {
-                            if value > 75 {
-                                return 1.0
-                            }else if value < -75 {
-                                return -1.0
-                            }
-                            return value / 75
-                        }
-                        
-                        JV.rotation_power = Double(normalize(Float(dragValue.width)))
+                        JV.valve_power = dragValue.width
                     }
                         .onEnded { value in
                             self.dragValue = .zero
                             self.isDragging = false
-                            JV.rotation_power = dragValue.width                            
+                            JV.rotation_power = dragValue.width
                         }
                 )
                 .animation(.spring(response: 0.2, dampingFraction: 0.6, blendDuration: 0), value: self.dragValue)
+            
+            Text("あける")
         }
     }
 }
+
+//#Preview {
+//    SmallXController()
+//}

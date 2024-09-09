@@ -18,6 +18,7 @@ class ParamMCUConnection: ObservableObject {
     @Published var target_motor_name_2: String = "mcu-rm-02"
     @Published var target_motor_name_3: String = "mcu-rm-03"
     @Published var target_motor_name_4: String = "mcu-rm-04"
+    @Published var target_valve_1: String = "mcu-valve-01"
 }
 
 class MCUConnectionHandler: ObservableObject {
